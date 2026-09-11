@@ -147,8 +147,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Python LSP (pylsp)
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "python",
+ vim.api.nvim_create_autocmd("FileType", {
+   pattern = "python",
     callback = function(args)
         local root_markers = { "pyproject.toml", "setup.py", "setup.cfg", ".git" }
         local root_dir = vim.fs.root(args.buf, root_markers) or vim.fn.getcwd()
@@ -166,9 +166,25 @@ vim.api.nvim_create_autocmd("FileType", {
                     },
                 },
             },
-            on_attach = function(client, bufnr)
+           on_attach = function(client, bufnr)
                 vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
             end,
         })
     end,
-})
+ })
+
+--vim.lsp.config['basedpyright'] = {
+--  cmd = { 'basedpyright-langserver', '--stdio' },
+--  filetypes = { 'python' },
+--  root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', '.git' },
+--}
+
+-- vim.lsp.enable({ 'basedpyright' })
+vim.o.completeopt = 'menuone,noselect,popup,fuzzy'
+vim.o.autocomplete = true
+
+--vim.pack.add({
+--  'https://github.com/mason-org/mason.nvim',
+--})
+
+--require('mason').setup()
