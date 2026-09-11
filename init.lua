@@ -179,7 +179,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --  root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', '.git' },
 --}
 
--- vim.lsp.enable({ 'basedpyright' })
+vim.lsp.enable({ 'pylsp' })
 vim.o.completeopt = 'menuone,noselect,popup,fuzzy'
 vim.o.autocomplete = true
 
